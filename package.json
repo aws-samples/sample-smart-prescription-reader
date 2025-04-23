@@ -63,7 +63,7 @@
     "ace-builds": "^1.39.1",
     "ajv": "^8.17.1",
     "aws-cdk": "^2.1005.0",
-    "aws-cdk-lib": "^2.187.0",
+    "aws-cdk-lib": "^2.189.1",
     "browser-image-resizer": "^2.4.1",
     "cdk-nag": "^2.35.49",
     "constructs": "^10.4.2",
