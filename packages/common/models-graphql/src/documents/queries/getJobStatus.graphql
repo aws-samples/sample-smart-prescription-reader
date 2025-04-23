@@ -1,0 +1,21 @@
+query GetJobStatus($jobId: String!) {
+  getJobStatus(jobId: $jobId) {
+    jobId
+    status
+    state
+    message
+    prescriptionData
+    score
+    updatedAt
+    error {
+      code
+      message
+    }
+    usage {
+      inputTokens
+      outputTokens
+      cacheReadInputTokens
+      task
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "lib": ["es2022"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es2022",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      ":smart-prescription-reader/common-constructs": [
+        "packages/common/constructs/src/index.ts",
+        "dist/packages/common/constructs/src/index.d.ts"
+      ],
+      ":smart-prescription-reader/common-types": [
+        "packages/common/types/src/index.ts",
+        "dist/packages/common/types/src/index.d.ts"
+      ],
+      ":smart-prescription-reader/demo": [
+        "packages/demo/src/index.ts",
+        "dist/packages/demo/src/index.d.ts"
+      ],
+      ":smart-prescription-reader/infra": [
+        "packages/infra/src/index.ts",
+        "dist/packages/infra/src/index.d.ts"
+      ],
+      ":smart-prescription-reader/models-graphql": [
+        "packages/common/models-graphql/src/index.ts",
+        "dist/packages/common/models-graphql/src/index.ts"
+      ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "src",
+    "outDir": "../../../dist/packages/common/models-graphql/tsc",
+    "tsBuildInfoFile": "../../../dist/packages/common/models-graphql/tsc/tsconfig.lib.tsbuildinfo",
+    "emitDeclarationOnly": false,
+    "noImplicitOverride": false,
+    "types": ["node"]
+  },
+  "include": ["src/**/*.ts"],
+  "references": []
+}

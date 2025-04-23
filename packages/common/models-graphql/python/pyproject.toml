@@ -1,0 +1,58 @@
+[project]
+name = "graphql-python-connector"
+version = "1.0.0"
+description = "Generate pydantic models from the graphql schema"
+requires-python = ">=3.9,<4"
+readme = 'README.md'
+dependencies = []
+
+[tool.hatch.build.targets.wheel]
+packages = ["graphql_python_connector"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[dependency-groups]
+dev = [
+    "autopep8>=2.3.1",
+    "black>=25.1.0",
+    "isort>=6.0.1",
+    "ruff>=0.8.2",
+    "turms>=0.8.5",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+exclude = [
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "dist",
+]
+
+line-length = 88
+indent-width = 4
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+]
+ignore = []
+
+fixable = ["ALL"]
+unfixable = []

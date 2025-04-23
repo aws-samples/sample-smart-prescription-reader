@@ -1,0 +1,54 @@
+{
+  "name": "@smart-prescription-reader/infra",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/infra/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "dependsOn": ["lint", "compile", "test", "synth"]
+    },
+    "compile": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/packages/infra/tsc"],
+      "options": {
+        "command": "tsc --build tsconfig.lib.json",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/infra",
+        "command": "cdk deploy --require-approval=never --app ../../dist/packages/infra/cdk.out"
+      },
+      "dependsOn": ["synth"]
+    },
+    "destroy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/infra",
+        "command": "cdk destroy --require-approval=never --app ../../dist/packages/infra/cdk.out"
+      }
+    },
+    "synth": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": ["default"],
+      "outputs": ["{workspaceRoot}/dist/packages/infra/cdk.out"],
+      "dependsOn": ["^build", "compile"],
+      "options": {
+        "cwd": "packages/infra",
+        "command": "cdk synth"
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../coverage/packages/infra"
+      }
+    }
+  },
+  "implicitDependencies": ["smart-prescription-reader"]
+}

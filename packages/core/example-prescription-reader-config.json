@@ -1,0 +1,15 @@
+{
+  "modelId": "us.anthropic.claude-3-haiku-20240307-v1:0",
+  "temperature": 0.0,
+  "medicationsKey": "medications/drug-list.txt",
+  "glossaryKey": "glossary/prescription-terms.txt",
+  "thinking": true,
+  "transcribe": false,
+  "promptCacheModels": [
+    "anthropic.claude-3-7-sonnet-20250219-v1:0",
+    "anthropic.claude-3-5-haiku-20241022-v1:0",
+    "amazon.nova-micro",
+    "amazon.nova-lite",
+    "amazon.nova-pro"
+  ]
+}

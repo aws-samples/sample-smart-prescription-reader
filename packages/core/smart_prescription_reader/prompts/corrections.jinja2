@@ -1,0 +1,31 @@
+I need you to correct your previous extraction based on this feedback:
+
+##Feedback from Review##
+{{ feedback }}
+
+##Instructions##
+Please provide a corrected version of the extracted data that:
+1. Addresses all issues mentioned in the feedback
+2. Maintains the same schema structure
+3. Keeps correct values unchanged
+4. Uses "ILLEGIBLE" for content noted as unreadable
+5. Uses "UNKNOWN" for missing information
+
+##Output Requirements##
+- Provide ONLY the corrected JSON data within <prescriptiondata> tags
+- Follow the exact same schema as the original extraction
+- Don't add fields that weren't in the original
+- Don't modify values that weren't mentioned in the feedback
+- Don't make assumptions about corrections
+
+{% if repeat_schema %}
+##Output Schema##
+The corrected data MUST follow this schema:
+
+{{ output_schema }}
+{% endif %}
+
+Your response MUST be in this format:
+<prescriptiondata>
+[corrected JSON data here]
+</prescriptiondata>

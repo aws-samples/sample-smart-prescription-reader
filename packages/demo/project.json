@@ -1,0 +1,99 @@
+{
+  "name": "@smart-prescription-reader/demo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/demo/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "dependsOn": ["lint", "compile", "bundle", "test"],
+      "options": {
+        "outputPath": "dist/packages/demo"
+      }
+    },
+    "bundle": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/packages/demo/bundle"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "compile": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}/tsc"],
+      "options": {
+        "command": "tsc --build tsconfig.app.json",
+        "cwd": "{projectRoot}"
+      },
+      "dependsOn": [
+        "@smart-prescription-reader/models-graphql:generate"
+      ]
+    },
+    "load:runtime-config": {
+      "executor": "nx:run-commands",
+      "metadata": {
+        "description": "Load runtime config from your deployed stack for dev purposes. You must set the AWS_REGION and CDK_APP_DIR env variables whilst calling i.e: AWS_REGION=ap-southeast-2 CDK_APP_DIR=./dist/packages/infra/cdk.out pnpm exec nx run @smart-prescription-reader/demo:load:runtime-config"
+      },
+      "options": {
+        "command": "curl https://`aws cloudformation describe-stacks --query \"Stacks[?StackName=='infra-sandbox'][].Outputs[?contains(OutputKey, 'DistributionDomainName')].OutputValue\" --output text`/runtime-config.json > './packages/demo/public/runtime-config.json'"
+      }
+    },
+    "preview": {
+      "dependsOn": ["build"],
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "@smart-prescription-reader/demo:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "@smart-prescription-reader/demo:build:development"
+        },
+        "production": {
+          "buildTarget": "@smart-prescription-reader/demo:build:production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "@smart-prescription-reader/demo:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "@smart-prescription-reader/demo:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "@smart-prescription-reader/demo:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "@smart-prescription-reader/demo:build",
+        "spa": true
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../coverage/packages/demo"
+      }
+    }
+  }
+}

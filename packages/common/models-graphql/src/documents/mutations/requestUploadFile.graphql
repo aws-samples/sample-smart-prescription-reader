@@ -1,0 +1,6 @@
+mutation RequestUploadFile($input: RequestUploadFileInput!) {
+  requestUploadFile(input: $input) {
+    url
+    objectKey
+  }
+}

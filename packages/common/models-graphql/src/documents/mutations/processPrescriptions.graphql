@@ -1,0 +1,8 @@
+mutation ProcessPrescription($input: ProcessPrescriptionInput!) {
+  processPrescription(input: $input) {
+    createdAt
+    jobId
+    status
+    updatedAt
+  }
+}

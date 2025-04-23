@@ -1,0 +1,29 @@
+{
+  "AWSDate": {
+    "py_type": "datetime.date"
+  },
+  "AWSDateTime": {
+    "py_type": "datetime.datetime"
+  },
+  "AWSEmail": {
+    "py_type": "str"
+  },
+  "AWSIPAddress": {
+    "py_type": "str"
+  },
+  "AWSJSON": {
+    "py_type": "str"
+  },
+  "AWSPhone": {
+    "py_type": "str"
+  },
+  "AWSTime": {
+    "py_type": "datetime.time"
+  },
+  "AWSTimestamp": {
+    "py_type": "int"
+  },
+  "AWSURL": {
+    "py_type": "str"
+  }
+}

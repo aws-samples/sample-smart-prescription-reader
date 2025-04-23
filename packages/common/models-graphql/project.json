@@ -1,0 +1,29 @@
+{
+  "name": "@smart-prescription-reader/models-graphql",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/common/models-graphql/src",
+  "projectType": "library",
+  "tags": [],
+  "implicitDependencies": [],
+  "targets": {
+    "build": {
+      "dependsOn": ["lint", "generate", "compile"]
+    },
+    "compile": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/packages/common/models-graphql/tsc"],
+      "options": {
+        "command": "tsc --build tsconfig.lib.json",
+        "cwd": "{projectRoot}"
+      },
+      "dependsOn": ["generate"]
+    },
+    "generate": {
+      "executor": "@nx-tools/nx-graphql-codegen:generate",
+      "options": {
+        "config": "packages/common/models-graphql/codegen.ts",
+        "watch": false
+      }
+    }
+  }
+}
