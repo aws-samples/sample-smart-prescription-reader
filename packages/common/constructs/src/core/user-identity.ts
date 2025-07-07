@@ -7,11 +7,12 @@
   * the License.
  */
 
+import * as crypto from 'crypto';
 import {
   IdentityPool,
   UserPoolAuthenticationProvider,
 } from 'aws-cdk-lib/aws-cognito-identitypool';
-import { CfnOutput, Duration, Lazy, Names, Stack } from 'aws-cdk-lib';
+import { CfnOutput, Duration, Lazy, Stack } from 'aws-cdk-lib';
 import {
   AccountRecovery,
   CfnManagedLoginBranding,
@@ -107,10 +108,27 @@ export class UserIdentity extends Construct {
     });
 
   private createUserPoolDomain = (userPool: UserPool) => {
-    const uniqueId = Names.uniqueResourceName(this, {
-      maxLength: 63,
-    });
-    const domainPrefix = `${uniqueId}`.toLowerCase();
+    const accountId = Stack.of(this).account;
+    const region = Stack.of(this).region;
+    const stackName = Stack.of(this).stackName.toLowerCase();
+
+    // Crear hash determinístico del account ID + región
+    const hash = crypto
+      .createHash('sha256')
+      .update(`${accountId}-${region}`)
+      .digest('hex')
+      .substring(0, 8);
+
+    const domainPrefix = `${stackName}-${hash}`;
+
+    // Validar que no exceda el límite de 63 caracteres
+    if (domainPrefix.length > 63) {
+      throw new Error(
+        `Generated domain name '${domainPrefix}' exceeds 63 character limit (${domainPrefix.length} chars). ` +
+          `Consider shortening the stack name.`,
+      );
+    }
+
     return new CfnUserPoolDomain(this, 'UserPoolDomain', {
       domain: domainPrefix,
       userPoolId: userPool.userPoolId,
