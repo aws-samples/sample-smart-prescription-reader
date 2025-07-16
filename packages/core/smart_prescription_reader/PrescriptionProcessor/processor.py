@@ -23,16 +23,16 @@ class PrescriptionProcessor:
     """Base class for processing prescriptions with shared functionality."""
 
     def __init__(
-            self,
-            bedrock_client: "BedrockRuntimeClient",
-            template_env: jinja2.Environment,
-            model_id: str,
-            temperature: Optional[float] = None,
-            medications: Optional[str] = None,
-            glossary: Optional[str] = None,
-            thinking: bool = False,
-            transcribe: bool = False,
-            prompt_cache: bool = False,
+        self,
+        bedrock_client: "BedrockRuntimeClient",
+        template_env: jinja2.Environment,
+        model_id: str,
+        temperature: Optional[float] = None,
+        medications: Optional[str] = None,
+        glossary: Optional[str] = None,
+        thinking: bool = False,
+        transcribe: bool = False,
+        prompt_cache: bool = False,
     ):
         """Initialize the PrescriptionProcessor with shared configuration.
 
@@ -64,12 +64,12 @@ class PrescriptionProcessor:
         }
 
     def get_system_prompt(
-            self,
-            prescription_schema: dict[str, Any],
-            thinking: Optional[bool] = None,
-            transcribe: Optional[bool] = None,
-            medications: Optional[str] = None,
-            glossary: Optional[str] = None,
+        self,
+        prescription_schema: dict[str, Any],
+        thinking: Optional[bool] = None,
+        transcribe: Optional[bool] = None,
+        medications: Optional[str] = None,
+        glossary: Optional[str] = None,
     ) -> str:
         """Get the system prompt for prescription extraction.
 
@@ -99,12 +99,12 @@ class PrescriptionProcessor:
         )
 
     def prepare_base_conversation(
-            self,
-            image: "ContentBlockTypeDef",
-            messages: list,
-            system_prompt: str = None,
-            ocr_transcription: Optional[str] = None,
-            response_prefill: Optional[str] = None,
+        self,
+        image: "ContentBlockTypeDef",
+        messages: list,
+        system_prompt: str = None,
+        ocr_transcription: Optional[str] = None,
+        response_prefill: Optional[str] = None,
     ) -> dict[str, Any]:
         """Prepare the base conversation parameters.
 

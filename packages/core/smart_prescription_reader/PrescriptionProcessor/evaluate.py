@@ -63,12 +63,12 @@ class EvaluateResponse(PrescriptionProcessor):
     task = "JUDGE"
 
     def prepare_evaluate_conversation(
-            self,
-            image: "ContentBlockTypeDef",
-            prescription_schema: dict[str, Any],
-            extraction: str,
-            ocr_transcription: Optional[str] = None,
-            response_prefill: Optional[str] = None,
+        self,
+        image: "ContentBlockTypeDef",
+        prescription_schema: dict[str, Any],
+        extraction: str,
+        ocr_transcription: Optional[str] = None,
+        response_prefill: Optional[str] = None,
     ) -> dict[str, Any]:
         """Prepare the conversation parameters for extraction evaluation."""
         if extraction == "":
@@ -90,11 +90,11 @@ class EvaluateResponse(PrescriptionProcessor):
 
     @retry_bedrock_errors
     def evaluate_response(
-            self,
-            image: "ContentBlockTypeDef",
-            prescription_schema: dict[str, Any],
-            extraction: str,
-            ocr_transcription: Optional[str] = None,
+        self,
+        image: "ContentBlockTypeDef",
+        prescription_schema: dict[str, Any],
+        extraction: str,
+        ocr_transcription: Optional[str] = None,
     ) -> EvaluateResponseResult:
         """Evaluate an extraction response."""
 

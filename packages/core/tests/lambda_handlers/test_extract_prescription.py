@@ -38,6 +38,6 @@ class TestExtractPrescriptionIntegration:
         try:
             jsonschema.validate(response["extraction"], schema)
         except Exception as e:
-            assert False, f"Schema validation failed: {e}"
+            raise AssertionError(f"Schema validation failed: {e}") from e
         assert response["usage"]["inputTokens"] > 0
         assert response["usage"]["outputTokens"] > 0

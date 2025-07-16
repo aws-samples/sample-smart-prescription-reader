@@ -54,13 +54,13 @@ def get_textract_client() -> "TextractClient":
 
 
 def create_presigned_url(
-        client: "S3Client",
-        logger,
-        bucket_name: str,
-        object_key: str,
-        client_method: str,
-        content_type: Optional[str] = None,
-        expiration: int = 3600,
+    client: "S3Client",
+    logger,
+    bucket_name: str,
+    object_key: str,
+    client_method: str,
+    content_type: Optional[str] = None,
+    expiration: int = 3600,
 ):
     """Generate a presigned URL S3 POST request to upload a file
 
@@ -69,7 +69,8 @@ def create_presigned_url(
     :param bucket_name: str
     :param object_key: str
     :param client_method: str should be either put_object or get_object
-    :param content_type: str Content type to include in Params of call to generate_presigned_url as part of the expected Headers
+    :param content_type: str Content type to include in Params of call to generate_presigned_url 
+                      as part of the expected Headers
     :param expiration: Time in seconds for the presigned URL to remain valid
     :return: Dictionary with the following keys:
         url: URL to post to

@@ -16,12 +16,12 @@ from smart_prescription_reader.models.workflow import EvaluateResponseResult
 @pytest.mark.integration
 class TestEvaluateResponseIntegration:
     def test_evaluate_response(
-            self,
-            monkeypatch,
-            mock_get_image_bytes_and_content_type,
-            schema,
-            image_key,
-            extraction,
+        self,
+        monkeypatch,
+        mock_get_image_bytes_and_content_type,
+        schema,
+        image_key,
+        extraction,
     ):
         monkeypatch.setattr(
             "smart_prescription_reader.lambda_handlers.evaluate_response.get_image_bytes_and_content_type",

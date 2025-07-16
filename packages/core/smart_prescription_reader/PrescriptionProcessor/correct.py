@@ -38,13 +38,13 @@ class CorrectResponse(PrescriptionProcessor):
     task = "CORRECT"
 
     def prepare_correction_conversation(
-            self,
-            image: "ContentBlockTypeDef",
-            prescription_schema: dict[str, Any],
-            extraction: str,
-            feedback: str,
-            response_prefill: Optional[str] = None,
-            ocr_transcription: Optional[str] = None,
+        self,
+        image: "ContentBlockTypeDef",
+        prescription_schema: dict[str, Any],
+        extraction: str,
+        feedback: str,
+        response_prefill: Optional[str] = None,
+        ocr_transcription: Optional[str] = None,
     ) -> dict[str, Any]:
         """Prepare the conversation parameters for extraction correction."""
         if feedback == "":
@@ -87,12 +87,12 @@ class CorrectResponse(PrescriptionProcessor):
 
     @retry_bedrock_errors
     def correct_response(
-            self,
-            image: "ContentBlockTypeDef",
-            prescription_schema: dict[str, Any],
-            extraction: str,
-            feedback: str,
-            ocr_transcription: Optional[str] = None,
+        self,
+        image: "ContentBlockTypeDef",
+        prescription_schema: dict[str, Any],
+        extraction: str,
+        feedback: str,
+        ocr_transcription: Optional[str] = None,
     ) -> CorrectResponseResult:
         """Correct an extraction based on feedback."""
         if self.config["thinking"] and "anthropic.claude-3-7-sonnet" in self.model_id:

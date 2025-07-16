@@ -6,7 +6,6 @@
 # the License.
 
 import json
-import logging
 from typing import TYPE_CHECKING, Any, Optional
 
 import json_repair
@@ -31,8 +30,6 @@ from smart_prescription_reader.utils import extract_tag_value
 
 if TYPE_CHECKING:
     from mypy_boto3_bedrock_runtime.type_defs import ContentBlockTypeDef
-
-logger = logging.getLogger(__name__)
 
 
 def get_is_prescription(text: str) -> bool:
@@ -83,11 +80,11 @@ class ExtractPrescription(PrescriptionProcessor):
     task = "EXTRACT"
 
     def prepare_extract_conversation(
-            self,
-            image: "ContentBlockTypeDef",
-            prescription_schema: dict[str, Any],
-            ocr_transcription: Optional[str] = None,
-            response_prefill: Optional[str] = None,
+        self,
+        image: "ContentBlockTypeDef",
+        prescription_schema: dict[str, Any],
+        ocr_transcription: Optional[str] = None,
+        response_prefill: Optional[str] = None,
     ) -> dict[str, Any]:
         """Prepare the conversation parameters for prescription extraction."""
         system_prompt = self.get_system_prompt(
@@ -103,10 +100,10 @@ class ExtractPrescription(PrescriptionProcessor):
 
     @retry_bedrock_errors
     def extract_prescription_data(
-            self,
-            image: "ContentBlockTypeDef",
-            prescription_schema: dict[str, Any],
-            ocr_transcription: Optional[str] = None,
+        self,
+        image: "ContentBlockTypeDef",
+        prescription_schema: dict[str, Any],
+        ocr_transcription: Optional[str] = None,
     ) -> ExtractPrescriptionResult:
         """Extract data from a prescription image."""
         if self.config["transcribe"]:

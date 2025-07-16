@@ -17,13 +17,13 @@ from smart_prescription_reader.models.workflow import CorrectResponseResult
 @pytest.mark.integration
 class TestCorrectResponseIntegration:
     def test_evaluate_response(
-            self,
-            monkeypatch,
-            mock_get_image_bytes_and_content_type,
-            schema,
-            image_key,
-            extraction,
-            feedback,
+        self,
+        monkeypatch,
+        mock_get_image_bytes_and_content_type,
+        schema,
+        image_key,
+        extraction,
+        feedback,
     ):
         monkeypatch.setattr(
             "smart_prescription_reader.lambda_handlers.correct_response.get_image_bytes_and_content_type",
@@ -50,6 +50,6 @@ class TestCorrectResponseIntegration:
         try:
             jsonschema.validate(response["extraction"], schema)
         except Exception as e:
-            assert False, f"Schema validation failed: {e}"
+            raise AssertionError(f"Schema validation failed: {e}") from e
         assert response["usage"]["inputTokens"] > 0
         assert response["usage"]["outputTokens"] > 0

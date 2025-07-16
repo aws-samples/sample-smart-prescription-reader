@@ -1,8 +1,8 @@
 from datetime import datetime
 from enum import Enum
-from typing import List, Literal, Optional
+from typing import Literal, Optional
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, Field
 
 
 class JobStateEnum(str, Enum):
@@ -43,9 +43,7 @@ class ErrorDetail(BaseModel):
 class ModelUsage(BaseModel):
     input_tokens: int = Field(alias="inputTokens")
     output_tokens: Optional[int] = Field(default=None, alias="outputTokens")
-    cache_read_input_tokens: Optional[int] = Field(
-        default=None, alias="cacheReadInputTokens"
-    )
+    cache_read_input_tokens: Optional[int] = Field(default=None, alias="cacheReadInputTokens")
     task: Optional[str] = Field(default=None)
 
 
@@ -61,7 +59,7 @@ class PrescriptionJob(BaseModel):
     status: JobStatusEnum
     ttl: int
     updated_at: datetime = Field(alias="updatedAt")
-    usage: Optional[List[Optional[ModelUsage]]] = Field(default=None)
+    usage: Optional[list[Optional[ModelUsage]]] = Field(default=None)
 
 
 class PresignedUrlResponse(BaseModel):
@@ -79,29 +77,31 @@ class Query(BaseModel):
 
 
 class RequestUploadFileRequestuploadfile(BaseModel):
-    typename: Literal["PresignedUrlResponse"] = Field(
-        alias="__typename", default="PresignedUrlResponse"
-    )
+    typename: Literal["PresignedUrlResponse"] = Field(alias="__typename", default="PresignedUrlResponse")
     url: str
     object_key: Optional[str] = Field(default=None, alias="objectKey")
 
 
 class RequestUploadFile(BaseModel):
-    request_upload_file: RequestUploadFileRequestuploadfile = Field(
-        alias="requestUploadFile"
-    )
+    request_upload_file: RequestUploadFileRequestuploadfile = Field(alias="requestUploadFile")
 
     class Arguments(BaseModel):
         input: RequestUploadFileInput
 
     class Meta:
-        document = "mutation RequestUploadFile($input: RequestUploadFileInput!) {\n  requestUploadFile(input: $input) {\n    url\n    objectKey\n    __typename\n  }\n}"
+        document = (
+            "mutation RequestUploadFile($input: RequestUploadFileInput!) {\n"
+            "  requestUploadFile(input: $input) {\n"
+            "    url\n"
+            "    objectKey\n"
+            "    __typename\n"
+            "  }\n"
+            "}"
+        )
 
 
 class ProcessPrescriptionProcessprescription(BaseModel):
-    typename: Literal["PrescriptionJob"] = Field(
-        alias="__typename", default="PrescriptionJob"
-    )
+    typename: Literal["PrescriptionJob"] = Field(alias="__typename", default="PrescriptionJob")
     created_at: datetime = Field(alias="createdAt")
     job_id: str = Field(alias="jobId")
     status: JobStatusEnum
@@ -109,15 +109,23 @@ class ProcessPrescriptionProcessprescription(BaseModel):
 
 
 class ProcessPrescription(BaseModel):
-    process_prescription: ProcessPrescriptionProcessprescription = Field(
-        alias="processPrescription"
-    )
+    process_prescription: ProcessPrescriptionProcessprescription = Field(alias="processPrescription")
 
     class Arguments(BaseModel):
         input: ProcessPrescriptionInput
 
     class Meta:
-        document = "mutation ProcessPrescription($input: ProcessPrescriptionInput!) {\n  processPrescription(input: $input) {\n    createdAt\n    jobId\n    status\n    updatedAt\n    __typename\n  }\n}"
+        document = (
+            "mutation ProcessPrescription($input: ProcessPrescriptionInput!) {\n"
+            "  processPrescription(input: $input) {\n"
+            "    createdAt\n"
+            "    jobId\n"
+            "    status\n"
+            "    updatedAt\n"
+            "    __typename\n"
+            "  }\n"
+            "}"
+        )
 
 
 class GetJobStatusGetjobstatusError(BaseModel):
@@ -130,16 +138,12 @@ class GetJobStatusGetjobstatusUsage(BaseModel):
     typename: Literal["ModelUsage"] = Field(alias="__typename", default="ModelUsage")
     input_tokens: int = Field(alias="inputTokens")
     output_tokens: Optional[int] = Field(default=None, alias="outputTokens")
-    cache_read_input_tokens: Optional[int] = Field(
-        default=None, alias="cacheReadInputTokens"
-    )
+    cache_read_input_tokens: Optional[int] = Field(default=None, alias="cacheReadInputTokens")
     task: Optional[str] = Field(default=None)
 
 
 class GetJobStatusGetjobstatus(BaseModel):
-    typename: Literal["PrescriptionJob"] = Field(
-        alias="__typename", default="PrescriptionJob"
-    )
+    typename: Literal["PrescriptionJob"] = Field(alias="__typename", default="PrescriptionJob")
     job_id: str = Field(alias="jobId")
     status: JobStatusEnum
     state: Optional[JobStateEnum] = Field(default=None)
@@ -148,7 +152,7 @@ class GetJobStatusGetjobstatus(BaseModel):
     score: Optional[str] = Field(default=None)
     updated_at: datetime = Field(alias="updatedAt")
     error: Optional[GetJobStatusGetjobstatusError] = Field(default=None)
-    usage: Optional[List[Optional[GetJobStatusGetjobstatusUsage]]] = Field(default=None)
+    usage: Optional[list[Optional[GetJobStatusGetjobstatusUsage]]] = Field(default=None)
 
 
 class GetJobStatus(BaseModel):
@@ -158,4 +162,29 @@ class GetJobStatus(BaseModel):
         job_id: str = Field(alias="jobId")
 
     class Meta:
-        document = "query GetJobStatus($jobId: String!) {\n  getJobStatus(jobId: $jobId) {\n    jobId\n    status\n    state\n    message\n    prescriptionData\n    score\n    updatedAt\n    error {\n      code\n      message\n      __typename\n    }\n    usage {\n      inputTokens\n      outputTokens\n      cacheReadInputTokens\n      task\n      __typename\n    }\n    __typename\n  }\n}"
+        document = (
+            "query GetJobStatus($jobId: String!) {\n"
+            "  getJobStatus(jobId: $jobId) {\n"
+            "    jobId\n"
+            "    status\n"
+            "    state\n"
+            "    message\n"
+            "    prescriptionData\n"
+            "    score\n"
+            "    updatedAt\n"
+            "    error {\n"
+            "      code\n"
+            "      message\n"
+            "      __typename\n"
+            "    }\n"
+            "    usage {\n"
+            "      inputTokens\n"
+            "      outputTokens\n"
+            "      cacheReadInputTokens\n"
+            "      task\n"
+            "      __typename\n"
+            "    }\n"
+            "    __typename\n"
+            "  }\n"
+            "}"
+        )

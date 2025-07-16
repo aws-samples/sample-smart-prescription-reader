@@ -1,6 +1,7 @@
 """
 Lambda handler for OCR processing using Textract
 """
+
 import logging
 import os
 from typing import Any
@@ -26,15 +27,16 @@ logging.getLogger("s3transfer").setLevel(logging.WARNING)
 
 textract = get_textract_client()
 
+
 @event_parser(model=OcrInput)
-def handler(event:OcrInput, context: LambdaContext) -> dict[str, Any]:
+def handler(event: OcrInput, context: LambdaContext) -> dict[str, Any]:
     """
     Lambda handler for OCR processing
-    
+
     Args:
         event: Lambda event containing the image information
         context: Lambda context
-        
+
     Returns:
         Dictionary containing the OCR results
     """
@@ -46,13 +48,13 @@ def handler(event:OcrInput, context: LambdaContext) -> dict[str, Any]:
     try:
         # Initialize OCR service
         ocr_service = OcrService(textract)
-        
+
         # Process image
         result = ocr_service.process_image(INPUT_BUCKET_NAME, event.image)
-        
+
         # Return result as dict
         return result.model_dump(by_alias=True)
-        
+
     except Exception as e:
         # Log error and re-raise
         print(f"Error processing OCR request: {str(e)}")

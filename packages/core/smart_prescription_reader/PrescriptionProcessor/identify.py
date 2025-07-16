@@ -7,12 +7,19 @@
 
 import json
 import logging
-from typing import Any, Dict, List, Optional
+from typing import TYPE_CHECKING, Any, Optional
 
 import jinja2
 import json_repair
 
-from smart_prescription_reader.bedrock_runtime_client import build_full_response, retry_bedrock_errors
+from smart_prescription_reader.bedrock_runtime_client import (
+    build_full_response,
+    retry_bedrock_errors,
+)
+
+if TYPE_CHECKING:
+    from mypy_boto3_bedrock_runtime import BedrockRuntimeClient
+
 from smart_prescription_reader.drug_name_matcher import DrugNameMatcher
 from smart_prescription_reader.exceptions import ModelResponseError
 from smart_prescription_reader.models.drug_information import DrugInformation
@@ -38,7 +45,7 @@ class IdentifyMedications(PrescriptionProcessor):
         self,
         bedrock_client: "BedrockRuntimeClient",
         template_env: jinja2.Environment,
-        config: Dict[str, Any],
+        config: dict[str, Any],
         drug_repository: Optional[DrugInformationRepository] = None,
     ):
         """Initialize the IdentifyMedications processor.
@@ -142,7 +149,7 @@ class IdentifyMedications(PrescriptionProcessor):
     def identify_medications(
         self,
         ocr_transcription: str,
-    ) -> List[str]:
+    ) -> list[str]:
         """Identify medications in the prescription."""
         input_params = self.prepare_identify_conversation(
             ocr_transcription=ocr_transcription,
@@ -160,7 +167,7 @@ class IdentifyMedications(PrescriptionProcessor):
             logging.debug("Failed to parse output: %s", text)
             raise ModelResponseError("Failed to parse output") from e
 
-    def find_matching_medications(self, ocr_transcription: str, limit_kb: int = 100) -> List[DrugInformation]:
+    def find_matching_medications(self, ocr_transcription: str, limit_kb: int = 100) -> list[DrugInformation]:
         """Identify medications and find matches in the drug database.
 
         This method uses the identify_medications method to get potential medication names,

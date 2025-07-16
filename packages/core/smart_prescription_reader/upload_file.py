@@ -35,11 +35,11 @@ def create_object_key(file_name: str, username: str = None):
 
 
 def upload_file(
-        s3_client: "S3Client",
-        file_name: str,
-        input_bucket: str,
-        expiration: int = None,
-        username: str = None,
+    s3_client: "S3Client",
+    file_name: str,
+    input_bucket: str,
+    expiration: int = None,
+    username: str = None,
 ) -> PresignedUrlResponse:
     object_key = create_object_key(file_name, username)
 

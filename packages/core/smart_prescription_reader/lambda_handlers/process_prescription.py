@@ -53,10 +53,10 @@ class UnauthorizedException(Exception):
 
 
 def process_prescription(
-        sfn: "SFNClient",
-        payload: ProcessPrescriptionInput,
-        username: str,
-        job_status_repo: JobStatusRepository,
+    sfn: "SFNClient",
+    payload: ProcessPrescriptionInput,
+    username: str,
+    job_status_repo: JobStatusRepository,
 ) -> PrescriptionJob:
     prescription_job = job_status_repo.save_job({"status": "QUEUED", "owner": username})
 

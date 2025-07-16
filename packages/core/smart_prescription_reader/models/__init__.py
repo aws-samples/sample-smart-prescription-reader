@@ -5,4 +5,44 @@
 # for the specific language governing permissions and limitations under
 # the License.
 
-from .schema import *
+from .schema import (
+    ErrorDetail,
+    GetJobStatus,
+    GetJobStatusGetjobstatus,
+    GetJobStatusGetjobstatusError,
+    GetJobStatusGetjobstatusUsage,
+    JobStateEnum,
+    JobStatusEnum,
+    ModelUsage,
+    Mutation,
+    PrescriptionJob,
+    PresignedUrlResponse,
+    ProcessPrescription,
+    ProcessPrescriptionInput,
+    ProcessPrescriptionProcessprescription,
+    Query,
+    RequestUploadFile,
+    RequestUploadFileInput,
+    RequestUploadFileRequestuploadfile,
+)
+
+__all__ = [
+    "JobStateEnum",
+    "JobStatusEnum",
+    "ProcessPrescriptionInput",
+    "RequestUploadFileInput",
+    "ErrorDetail",
+    "ModelUsage",
+    "PrescriptionJob",
+    "PresignedUrlResponse",
+    "Mutation",
+    "Query",
+    "RequestUploadFileRequestuploadfile",
+    "RequestUploadFile",
+    "ProcessPrescriptionProcessprescription",
+    "ProcessPrescription",
+    "GetJobStatusGetjobstatusError",
+    "GetJobStatusGetjobstatusUsage",
+    "GetJobStatusGetjobstatus",
+    "GetJobStatus",
+]

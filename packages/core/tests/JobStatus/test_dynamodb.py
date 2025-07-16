@@ -172,8 +172,8 @@ class TestDynamodb:
 
         assert call_args["Key"] == {"jobId": job_id}
         assert (
-                "SET #status = :status, #updatedAt = :updatedAt, #ttl = :ttl, #state = :state"
-                in call_args["UpdateExpression"]
+            "SET #status = :status, #updatedAt = :updatedAt, #ttl = :ttl, #state = :state"
+            in call_args["UpdateExpression"]
         )
         assert call_args["ExpressionAttributeNames"] == {
             "#state": "state",
@@ -213,8 +213,8 @@ class TestDynamodb:
 
         assert call_args["Key"] == {"jobId": job_id}
         assert (
-                "SET #status = :status, #updatedAt = :updatedAt, #ttl = :ttl, #state = :state, #error = :error"
-                in call_args["UpdateExpression"]
+            "SET #status = :status, #updatedAt = :updatedAt, #ttl = :ttl, #state = :state, #error = :error"
+            in call_args["UpdateExpression"]
         )
         assert call_args["ExpressionAttributeNames"] == {
             "#state": "state",
@@ -269,9 +269,9 @@ class TestDynamodb:
 
         assert call_args["Key"] == {"jobId": job_id}
         assert (
-                "SET #status = :status, #updatedAt = :updatedAt, #ttl = :ttl, #message = :message, #state = :state, "
-                "#prescriptionData = :prescriptionData, #score = :score, #usage = list_append(if_not_exists(#usage, "
-                ":emptyList), :usage)" in call_args["UpdateExpression"]
+            "SET #status = :status, #updatedAt = :updatedAt, #ttl = :ttl, #message = :message, #state = :state, "
+            "#prescriptionData = :prescriptionData, #score = :score, #usage = list_append(if_not_exists(#usage, "
+            ":emptyList), :usage)" in call_args["UpdateExpression"]
         )
         assert call_args["ExpressionAttributeNames"] == {
             "#message": "message",

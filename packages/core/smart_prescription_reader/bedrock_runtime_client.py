@@ -75,9 +75,9 @@ def handle_bedrock_errors(func):
                     print(e.response["Error"]["Code"])
                     raise RateLimitError(e) from e
                 elif e.response["Error"]["Code"] in (
-                        "ModelTimeoutException",
-                        "InternalServerException",
-                        "ServiceUnavailableException",
+                    "ModelTimeoutException",
+                    "InternalServerException",
+                    "ServiceUnavailableException",
                 ):
                     print(e)
                     raise RetryableError(e) from e
@@ -114,7 +114,7 @@ def retry_bedrock_errors(func):
 
 @handle_bedrock_errors
 def invoke_model_with_input(
-        bedrock_runtime: "BedrockRuntimeClient", **input: Unpack[InvokeModelInput]
+    bedrock_runtime: "BedrockRuntimeClient", **input: Unpack[InvokeModelInput]
 ) -> "ConverseResponseTypeDef":
     """
     Invoke a model with the given input
@@ -144,7 +144,7 @@ def invoke_model_with_input(
 
 @retry_bedrock_errors
 def invoke_model_with_input_retry(
-        bedrock_runtime: "BedrockRuntimeClient", **input: Unpack[InvokeModelInput]
+    bedrock_runtime: "BedrockRuntimeClient", **input: Unpack[InvokeModelInput]
 ) -> "ConverseResponseTypeDef":
     """
     Invoke a model with the given input
