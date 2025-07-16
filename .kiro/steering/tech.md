@@ -4,7 +4,7 @@
 
 - **Nx**: Monorepo build system and task orchestration
 - **pnpm**: TypeScript package manager with workspace support
-- **uv**: Python package and project manager for all Python dependencies
+- **uv**: Python package and project manager for all Python dependencies. Prefix all python commands with `uv run`.
 - **TypeScript**: Primary language for infrastructure and frontend
 - **Python 3.13+**: Backend business logic and Lambda functions
 
@@ -24,8 +24,8 @@
 - **Jinja2**: Template engine for AI prompts (extract, evaluate, correct)
 - **Tenacity**: Retry logic for Bedrock API calls with exponential backoff
 - **JSON Repair**: Handles malformed JSON responses from AI models
-- **pytest**: Testing framework for unit and integration tests
-- **Ruff**: Fast Python linter and formatter replacing flake8/black
+- **pytest**: Testing framework for unit and integration tests. Run pytest with `uv run pytest`
+- **Ruff**: Fast Python linter and formatter replacing flake8/black. Always run `ruff format` and `ruff check --fix` before completing a task.
 
 ### Frontend (React)
 
