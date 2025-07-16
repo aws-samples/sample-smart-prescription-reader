@@ -12,6 +12,7 @@ dependencies = [
     "json-repair>=0.40.0",
     "jsonschema>=4.23.0",
     "pydantic>=2.5.2",
+    "rapidfuzz>=3.13.0",
     "tenacity>=9.0.0",
 ]
 

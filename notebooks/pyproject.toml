@@ -9,6 +9,8 @@ dependencies = [
     "ipykernel",
     "rapidfuzz>=3.13.0",
     "numpy>=2.0.2",
+    "boto3>=1.38.15",
+    "boto3-stubs-lite[bedrock-runtime,s3,ssm,textract]>=1.38.15",
 ]
 
 [tool.ruff]
