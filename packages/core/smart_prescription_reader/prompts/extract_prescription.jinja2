@@ -8,13 +8,6 @@ Your job is to identify which attributes are present for each medication and wha
   {{ glossary }}
 {% endif %}
 
-{% if medications %}
-  ##Medication Information##
-  Use this list of medications to help transcribe the writing in the image:
-
-  {{ medications }}
-{% endif %}
-
 ##What is a Prescription?##
 A prescription is any medical document that instructs the preparation and/or dispensing of medication(s). This includes:
 - Standard prescriptions listing medications with dosage and administration instructions
@@ -38,28 +31,19 @@ Important:
   - Don't add fields that aren't in the schema
 
 ##Analysis Steps##
-{% if transcribe %}
-  1. Transcribe Text:
-  - Transcribe the text from the image.
-  - Do your best to preserve the layout.
-{% endif %}
-
-{{ "2." if transcribe else "1." }} Prescription Verification:
+1. Prescription Verification:
 - Is this a medical document containing medication orders?
 - Does it have typical prescription elements?
-- An image may also include a voucher or receipt alongside the prescription.
 
-{{ "3." if transcribe else "2." }} Data Identification:
+2. Data Identification:
 - Review the Output Schema to understand what information to extract
 - Locate the required information in the prescription
 - Assess the legibility of each piece of information
 - Note any unclear or partially legible text
-{% if medications %}
-  - Use the medication names in "Medication Information" to correct any transcription errors.
-{% endif %}
+- If provided, use the medication names and strengths in "Medication Information" to correct any transcription errors.
 - If the image includes additional documents, only extract data from the prescription.
 
-{{ "4." if transcribe else "3." }} Data Extraction:
+3. Data Extraction:
 - Extract ONLY the data specified in Output Schema
 - For required fields:
     * Record found values when clearly legible
@@ -70,9 +54,7 @@ Important:
 
 ##Output Format##
 You MUST respond in the following format:
-{% if transcribe %}
-  <transcription>The text transcribed from the image.</transcription>
-{% endif %}
+<response>
 {% if thinking %}
   <thinking>
   Before providing your response, document your analysis:
@@ -84,8 +66,7 @@ You MUST respond in the following format:
      - Any challenges or ambiguities
   </thinking>
 {% endif %}
-<isprescription>Respond TRUE if the image is a prescription and FALSE if not</isprescription>
-<ishandwritten>Respond TRUE if the prescription is handwritten and FALSE if the prescription is printed</ishandwritten>
+<isprescription>TRUE/FALSE whether the image is a prescription</isprescription>
 <prescriptiondata>
 - This field MUST be valid JSON following the "Output Schema"
 - DO NOT infer or assume values - only record what you can see
@@ -95,7 +76,7 @@ You MUST respond in the following format:
 - Follow the schema structure exactly
 - DO NOT add fields not specified in the schema
 </prescriptiondata>
-
+</response>
 
 Remember:
   - Include all required fields
