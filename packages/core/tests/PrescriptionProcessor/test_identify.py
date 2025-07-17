@@ -59,6 +59,27 @@ class TestIdentifyMedications:
         ]
 
     @pytest.fixture
+    def large_sample_drugs(self):
+        """Fixture providing a large sample of drug information for testing size limits."""
+        # Create a list of 50 drugs with long names and descriptions
+        drugs = []
+        for i in range(1, 51):
+            drug_name = f"Medication{i}" + "X" * 50  # Long drug name
+            active_ingredient = f"ActiveIngredient{i}" + "Y" * 50  # Long active ingredient
+            strength = f"{i * 10} mg" + "Z" * 20  # Long strength
+            form = "Tablet" + "W" * 20  # Long form
+
+            drugs.append(
+                DrugInformation(
+                    drug_name=drug_name,
+                    active_ingredient=active_ingredient,
+                    strength=strength,
+                    form=form,
+                )
+            )
+        return drugs
+
+    @pytest.fixture
     def sample_drug_names(self):
         """Fixture providing sample drug names."""
         return ["Lisinopril", "Metformin", "Metformin Hydrochloride", "Lipitor", "Atorvastatin"]
@@ -236,3 +257,303 @@ class TestIdentifyMedications:
 
         # Check that the configured threshold was used
         assert matcher.threshold == 90
+
+    def test_find_matching_medications_with_mocked_response(
+        self, mock_bedrock_client, mock_template_env, config, sample_drugs
+    ):
+        """Test find_matching_medications with mocked identify_medications response."""
+        # Create a mock repository
+        repo = MockDrugRepository(drugs=sample_drugs)
+
+        # Initialize the processor
+        processor = IdentifyMedications(
+            bedrock_client=mock_bedrock_client, template_env=mock_template_env, config=config, drug_repository=repo
+        )
+
+        # Mock the identify_medications method to return specific medications
+        processor.identify_medications = MagicMock(return_value=["Lisinopril", "Metformin"])
+
+        # Call the method
+        ocr_text = "Patient is taking Lisinopril 10mg and Metformin 500mg daily."
+        results = processor.find_matching_medications(ocr_text)
+
+        # Check that identify_medications was called with the OCR text
+        processor.identify_medications.assert_called_once_with(ocr_text)
+
+        # Check that the results contain the expected medications
+        assert len(results) == 2
+        drug_names = {drug.drug_name for drug in results}
+        assert "Lisinopril" in drug_names
+        assert "Metformin" in drug_names
+
+    def test_find_matching_medications_with_mocked_drug_matcher(
+        self, mock_bedrock_client, mock_template_env, config, sample_drugs
+    ):
+        """Test find_matching_medications with mocked DrugNameMatcher."""
+        # Create a mock repository
+        repo = MockDrugRepository(drugs=sample_drugs)
+
+        # Initialize the processor
+        processor = IdentifyMedications(
+            bedrock_client=mock_bedrock_client, template_env=mock_template_env, config=config, drug_repository=repo
+        )
+
+        # Mock the identify_medications method
+        processor.identify_medications = MagicMock(return_value=["Lisinopril", "Metformin", "Unknown"])
+
+        # Mock the drug_matcher property
+        mock_matcher = MagicMock()
+        mock_matcher.list_matches.return_value = {"Lisinopril", "Metformin"}
+        processor._drug_matcher = mock_matcher
+
+        # Call the method
+        ocr_text = "Patient is taking Lisinopril 10mg and Metformin 500mg daily."
+        results = processor.find_matching_medications(ocr_text)
+
+        # Check that the drug matcher was used
+        mock_matcher.list_matches.assert_called_once_with(["Lisinopril", "Metformin", "Unknown"])
+
+        # Check that the results contain the expected medications
+        assert len(results) == 2
+        drug_names = {drug.drug_name for drug in results}
+        assert "Lisinopril" in drug_names
+        assert "Metformin" in drug_names
+
+    def test_find_matching_medications_without_drug_repository(self, mock_bedrock_client, mock_template_env, config):
+        """Test find_matching_medications without a drug repository."""
+        # Initialize the processor without a drug repository
+        processor = IdentifyMedications(
+            bedrock_client=mock_bedrock_client, template_env=mock_template_env, config=config
+        )
+
+        # Call the method
+        ocr_text = "Patient is taking Lisinopril 10mg and Metformin 500mg daily."
+        results = processor.find_matching_medications(ocr_text)
+
+        # Check that the results are empty
+        assert len(results) == 0
+
+    def test_find_matching_medications_with_empty_response(
+        self, mock_bedrock_client, mock_template_env, config, sample_drugs
+    ):
+        """Test find_matching_medications with empty identify_medications response."""
+        # Create a mock repository
+        repo = MockDrugRepository(drugs=sample_drugs)
+
+        # Initialize the processor
+        processor = IdentifyMedications(
+            bedrock_client=mock_bedrock_client, template_env=mock_template_env, config=config, drug_repository=repo
+        )
+
+        # Mock the identify_medications method to return empty list
+        processor.identify_medications = MagicMock(return_value=[])
+
+        # Call the method
+        ocr_text = "Patient is taking medication daily."
+        results = processor.find_matching_medications(ocr_text)
+
+        # Check that the results are empty
+        assert len(results) == 0
+
+    def test_find_matching_medications_with_no_matches(
+        self, mock_bedrock_client, mock_template_env, config, sample_drugs
+    ):
+        """Test find_matching_medications when no matches are found."""
+        # Create a mock repository
+        repo = MockDrugRepository(drugs=sample_drugs)
+
+        # Initialize the processor
+        processor = IdentifyMedications(
+            bedrock_client=mock_bedrock_client, template_env=mock_template_env, config=config, drug_repository=repo
+        )
+
+        # Mock the identify_medications method
+        processor.identify_medications = MagicMock(return_value=["Unknown1", "Unknown2"])
+
+        # Mock the drug_matcher property
+        mock_matcher = MagicMock()
+        mock_matcher.list_matches.return_value = set()  # No matches found
+        processor._drug_matcher = mock_matcher
+
+        # Call the method
+        ocr_text = "Patient is taking unknown medication daily."
+        results = processor.find_matching_medications(ocr_text)
+
+        # Check that the results are empty
+        assert len(results) == 0
+
+    def test_find_matching_medications_without_drug_matcher(
+        self, mock_bedrock_client, mock_template_env, config, sample_drugs
+    ):
+        """Test find_matching_medications without a drug matcher."""
+        # Create a mock repository
+        repo = MockDrugRepository(drugs=sample_drugs)
+
+        # Initialize the processor
+        processor = IdentifyMedications(
+            bedrock_client=mock_bedrock_client, template_env=mock_template_env, config=config, drug_repository=repo
+        )
+
+        # Mock the identify_medications method
+        processor.identify_medications = MagicMock(return_value=["Lisinopril", "Metformin"])
+
+        # Set drug_matcher to None to simulate no matcher available
+        processor._drug_matcher = None
+
+        # Call the method
+        ocr_text = "Patient is taking Lisinopril 10mg and Metformin 500mg daily."
+        results = processor.find_matching_medications(ocr_text)
+
+        # Check that the results contain the expected medications
+        # In this case, it should use the potential medications directly
+        assert len(results) == 2
+        drug_names = {drug.drug_name for drug in results}
+        assert "Lisinopril" in drug_names
+        assert "Metformin" in drug_names
+
+    def test_find_matching_medications_error_handling(
+        self, mock_bedrock_client, mock_template_env, config, sample_drugs
+    ):
+        """Test error handling in find_matching_medications."""
+        # Create a mock repository
+        repo = MockDrugRepository(drugs=sample_drugs)
+
+        # Initialize the processor
+        processor = IdentifyMedications(
+            bedrock_client=mock_bedrock_client, template_env=mock_template_env, config=config, drug_repository=repo
+        )
+
+        # Mock the identify_medications method to raise an exception
+        processor.identify_medications = MagicMock(side_effect=Exception("Test error"))
+
+        # Call the method
+        ocr_text = "Patient is taking Lisinopril 10mg and Metformin 500mg daily."
+        results = processor.find_matching_medications(ocr_text)
+
+        # Check that the results are empty due to error handling
+        assert len(results) == 0
+
+    def test_get_medication_context_with_medications(
+        self, mock_bedrock_client, mock_template_env, config, sample_drugs
+    ):
+        """Test get_medication_context with medications."""
+        # Create a mock repository
+        repo = MockDrugRepository(drugs=sample_drugs)
+
+        # Initialize the processor
+        processor = IdentifyMedications(
+            bedrock_client=mock_bedrock_client, template_env=mock_template_env, config=config, drug_repository=repo
+        )
+
+        # Mock the find_matching_medications method to return specific medications
+        processor.find_matching_medications = MagicMock(return_value=sample_drugs)
+
+        # Call the method
+        ocr_text = "Patient is taking Lisinopril 10mg and Metformin 500mg daily."
+        context = processor.get_medication_context(ocr_text)
+
+        # Check that find_matching_medications was called with the OCR text
+        processor.find_matching_medications.assert_called_once_with(ocr_text, limit_kb=100)
+
+        # Check that the context contains the expected information
+        assert "##Medication Information##" in context
+        assert "Use this information to help correct transcription errors:" in context
+        assert "- Lisinopril: 10 mg Tablet" in context
+        assert "- Metformin (Metformin Hydrochloride): 500 mg Extended-Release Tablet" in context
+        assert "- Lipitor (Atorvastatin): 20 mg Tablet" in context
+
+    def test_get_medication_context_empty_results(self, mock_bedrock_client, mock_template_env, config):
+        """Test get_medication_context with empty results."""
+        # Initialize the processor
+        processor = IdentifyMedications(
+            bedrock_client=mock_bedrock_client, template_env=mock_template_env, config=config
+        )
+
+        # Mock the find_matching_medications method to return empty list
+        processor.find_matching_medications = MagicMock(return_value=[])
+
+        # Call the method
+        ocr_text = "Patient is taking medication daily."
+        context = processor.get_medication_context(ocr_text)
+
+        # Check that find_matching_medications was called with the OCR text
+        processor.find_matching_medications.assert_called_once_with(ocr_text, limit_kb=100)
+
+        # Check that the context is empty
+        assert context == ""
+
+    def test_get_medication_context_repository_size_limiting(
+        self, mock_bedrock_client, mock_template_env, config, large_sample_drugs
+    ):
+        """Test that get_medication_context passes size limits to the repository."""
+        # Create a mock repository with size limiting behavior
+        repo = MockDrugRepository()
+
+        # Override the search_drugs method to simulate size limiting
+        limited_drugs = large_sample_drugs[:10]  # Only return first 10 drugs
+        repo.search_drugs = MagicMock(return_value=limited_drugs)
+
+        # Initialize the processor
+        processor = IdentifyMedications(
+            bedrock_client=mock_bedrock_client, template_env=mock_template_env, config=config, drug_repository=repo
+        )
+
+        # Mock the identify_medications method to return medication names
+        processor.identify_medications = MagicMock(return_value=["Med1", "Med2"])
+
+        # Call the method with a custom size limit
+        ocr_text = "Patient is taking multiple medications."
+        context = processor.get_medication_context(ocr_text, limit_kb=10)
+
+        # Check that the repository's search_drugs was called with the limit_kb parameter
+        repo.search_drugs.assert_called_once()
+        args, kwargs = repo.search_drugs.call_args
+        assert kwargs.get("limit_kb") == 10
+
+        # Check that the context is not empty
+        assert context != ""
+
+        # Check that the context contains only the medications returned by the repository
+        assert len(context.split("\n")) == len(limited_drugs) + 2  # +2 for header lines
+
+        # Check that the context contains the expected header information
+        assert "##Medication Information##" in context
+        assert "Use this information to help correct transcription errors:" in context
+
+    def test_get_medication_context_formatting(self, mock_bedrock_client, mock_template_env, config):
+        """Test formatting of medication context with different drug information."""
+        # Create drugs with different combinations of fields
+        drugs = [
+            # Complete information
+            DrugInformation(drug_name="Drug1", active_ingredient="Active1", strength="10 mg", form="Tablet"),
+            # Missing form
+            DrugInformation(drug_name="Drug2", active_ingredient="Active2", strength="20 mg", form=""),
+            # Missing strength
+            DrugInformation(drug_name="Drug3", active_ingredient="Active3", strength="", form="Capsule"),
+            # Missing strength and form
+            DrugInformation(drug_name="Drug4", active_ingredient="Active4", strength="", form=""),
+            # Same drug name and active ingredient
+            DrugInformation(drug_name="Drug5", active_ingredient="Drug5", strength="30 mg", form="Tablet"),
+        ]
+
+        # Create a mock repository
+        repo = MockDrugRepository(drugs=drugs)
+
+        # Initialize the processor
+        processor = IdentifyMedications(
+            bedrock_client=mock_bedrock_client, template_env=mock_template_env, config=config, drug_repository=repo
+        )
+
+        # Mock the find_matching_medications method
+        processor.find_matching_medications = MagicMock(return_value=drugs)
+
+        # Call the method
+        ocr_text = "Patient is taking multiple medications."
+        context = processor.get_medication_context(ocr_text)
+
+        # Check formatting for each case
+        assert "- Drug1 (Active1): 10 mg Tablet" in context
+        assert "- Drug2 (Active2): 20 mg" in context
+        assert "- Drug3 (Active3): Capsule" in context
+        assert "- Drug4 (Active4)" in context
+        assert "- Drug5: 30 mg Tablet" in context  # No active ingredient in parentheses

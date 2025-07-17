@@ -220,19 +220,23 @@ class IdentifyMedications(PrescriptionProcessor):
 
         This method identifies medications in the OCR text, finds matches in the
         drug database, and formats the information for use in extraction prompts.
+        It handles empty results gracefully and relies on the limit_kb parameter
+        to control the size of the context.
 
         Args:
             ocr_transcription: OCR transcription text
-            limit_kb: Maximum size of results in KB
+            limit_kb: Maximum size of results in KB (default: 100)
 
         Returns:
-            Formatted medication context string
+            Formatted medication context string or empty string if no medications found
         """
         # Find matching medications
+        # The drug repository already handles size limiting based on limit_kb
         medications = self.find_matching_medications(ocr_transcription, limit_kb=limit_kb)
 
         # If no medications found, return empty string
         if not medications:
+            logging.info("No medications found for context generation")
             return ""
 
         # Format medication information
@@ -256,4 +260,8 @@ class IdentifyMedications(PrescriptionProcessor):
 
             context_lines.append(line)
 
-        return "\n".join(context_lines)
+        # Join lines into a single string
+        context = "\n".join(context_lines)
+
+        logging.info(f"Generated medication context with {len(medications)} medications")
+        return context
