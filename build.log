@@ -3,39 +3,25 @@
 
 
 
-> nx run @smart-prescription-reader/common-types:compile  [local cache]
-
-
-> nx run @smart-prescription-reader/common-types:test  [existing outputs match the cache, left as is]
-
-
-> nx run @smart-prescription-reader/common-types:lint  [existing outputs match the cache, left as is]
-
-
-> nx run @smart-prescription-reader/common-constructs:compile  [local cache]
-
-
-> nx run @smart-prescription-reader/common-types:build  [local cache]
-
-
-> nx run @smart-prescription-reader/common-constructs:test  [existing outputs match the cache, left as is]
-
-
-> nx run @smart-prescription-reader/common-constructs:lint  [existing outputs match the cache, left as is]
-
-
-> nx run @smart-prescription-reader/models-graphql:lint  [existing outputs match the cache, left as is]
-
-
-> nx run @smart-prescription-reader/demo:lint  [existing outputs match the cache, left as is]
-
-
-> nx run @smart-prescription-reader/infra:compile  [existing outputs match the cache, left as is]
+> nx run @smart-prescription-reader/common-types:compile
 
 > tsc --build tsconfig.lib.json
 
 
-> nx run @smart-prescription-reader/demo:test  [existing outputs match the cache, left as is]
+> nx run @smart-prescription-reader/common-constructs:compile
+
+> tsc --build tsconfig.lib.json
+
+
+> nx run @smart-prescription-reader/common-types:test
+
+
+[1m[7m[36m RUN [39m[27m[22m [36mv3.1.1 [39m[90m/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/common/types[39m
+
+No test files found, exiting with code 0
+
+[2minclude: [22m[33msrc/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}[39m
+[2mexclude:  [22m[33m**/node_modules/**[2m, [22m**/dist/**[2m, [22m**/cypress/**[2m, [22m**/.{idea,git,cache,output,temp}/**[2m, [22m**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*[39m
 
 
 > nx run graphql-python-connector:generate
@@ -43,10 +29,6 @@
 > uv run --project ./python turms gen
 
 [1m[33mwarning[39m[0m[1m:[0m [1m`VIRTUAL_ENV=/Users/strunkjd/Code/2026-q1-ngde-cohort-amer-beabrian/strunkjd/week4/.venv` does not match the project environment path `python/.venv` and will be ignored; use `--active` to target the active environment instead[0m
-   [36m[1mBuilding[0m[39m graphql-python-connector[2m @ file:///private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/common/models-graphql/python[0m
-      [32m[1mBuilt[0m[39m graphql-python-connector[2m @ file:///private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/common/models-graphql/python[0m
-[2mUninstalled [1m1 package[0m [2min 4ms[0m[0m
-[2mInstalled [1m1 package[0m [2min 62ms[0m[0m
 [?25l[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
 [32m│[0m                                                                              [32m│[0m
 [32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
@@ -88,22 +70,20 @@
 [SUCCESS] Generate to /private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/common/models-graphql/src/graphql/
 [SUCCESS] Generate outputs
 
-> nx run @smart-prescription-reader/models-graphql:compile  [local cache]
+> nx run @smart-prescription-reader/common-types:lint
+
+> eslint .
 
 
-> nx run @smart-prescription-reader/demo:compile  [local cache]
+> nx run @smart-prescription-reader/common-constructs:test
 
 
-> nx run @smart-prescription-reader/models-graphql:build  [local cache]
+[1m[7m[36m RUN [39m[27m[22m [36mv3.1.1 [39m[90m/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/common/constructs[39m
 
+No test files found, exiting with code 0
 
-> nx run @smart-prescription-reader/demo:bundle:production  [local cache]
-
-
-> nx run @smart-prescription-reader/demo:build  [local cache]
-
-
-> nx run @smart-prescription-reader/common-constructs:build  [local cache]
+[2minclude: [22m[33msrc/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}[39m
+[2mexclude:  [22m[33m**/node_modules/**[2m, [22m**/dist/**[2m, [22m**/cypress/**[2m, [22m**/.{idea,git,cache,output,temp}/**[2m, [22m**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*[39m
 
 
 > nx run smart-prescription-reader:build
@@ -136,13 +116,106 @@
     • Adding [34m[1murllib3==1.26.20 ; python_full_version < '3.10'[22m[39m dependency
     • Adding [34m[1murllib3==2.6.3 ; python_full_version >= '3.10'[22m[39m dependency
   Generating sdist and wheel artifacts
-[1mRunning command[22m: uv build at [1m/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/nx-python/build/8a638aee-3359-4495-9621-226531179a11[22m folder
+[1mRunning command[22m: uv build at [1m/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/nx-python/build/0f5324cf-f0a2-4542-8b7a-f5f994cb95ff[22m folder
 
 [1mBuilding source distribution...[0m
 [1mBuilding wheel from source distribution...[0m
 Successfully built [36m[1mdist/smart_prescription_reader-1.0.0.tar.gz[0m[39m
 Successfully built [36m[1mdist/smart_prescription_reader-1.0.0-py3-none-any.whl[0m[39m
   Artifacts generated at [1mpackages/core/dist[22m folder
+
+> nx run @smart-prescription-reader/models-graphql:compile
+
+> tsc --build tsconfig.lib.json
+
+
+> nx run @smart-prescription-reader/common-constructs:lint
+
+> eslint .
+
+[0m[0m
+[0m[4m/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/common/constructs/src/core/static-website.ts[24m[0m
+[0m  [2m144:37[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m145:36[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[33m[1m✖ 2 problems (0 errors, 2 warnings)[22m[39m[0m
+[0m[33m[1m[22m[39m[0m
+
+> nx run @smart-prescription-reader/infra:compile
+
+> tsc --build tsconfig.lib.json
+
+
+> nx run @smart-prescription-reader/demo:compile
+
+> tsc --build tsconfig.app.json
+
+
+> nx run @smart-prescription-reader/models-graphql:lint
+
+> eslint .
+
+
+> nx run @smart-prescription-reader/demo:test
+
+
+♻️  Generating routes...
+✅ Processed routes in 157ms
+
+[1m[7m[36m RUN [39m[27m[22m [36mv3.1.1 [39m[90m/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/demo[39m
+
+No test files found, exiting with code 0
+
+[2minclude: [22m[33msrc/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}[39m
+[2mexclude:  [22m[33m**/node_modules/**[2m, [22m**/dist/**[2m, [22m**/cypress/**[2m, [22m**/.{idea,git,cache,output,temp}/**[2m, [22m**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*[39m
+
+
+> nx run @smart-prescription-reader/demo:lint
+
+> eslint .
+
+[0m[0m
+[0m[4m/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/demo/src/components/AppLayout/index.tsx[24m[0m
+[0m  [2m70:14[22m  [33mwarning[39m  'AppLayoutContext' is already defined  [2mno-redeclare[22m[0m
+[0m[0m
+[0m[4m/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/demo/src/components/DisplayPrescription.tsx[24m[0m
+[0m  [2m19:7[22m  [33mwarning[39m  Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop  [2mjsx-a11y/img-redundant-alt[22m[0m
+[0m[0m
+[0m[4m/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/demo/src/components/NewPrescriptionForm.tsx[24m[0m
+[0m  [2m105:24[22m  [33mwarning[39m  Expected '===' and instead saw '=='  [2meqeqeq[22m[0m
+[0m[0m
+[0m[4m/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/demo/src/components/StateProgress.tsx[24m[0m
+[0m  [2m85:12[22m  [33mwarning[39m  Fragments should contain more than one child - otherwise, there’s no need for a Fragment at all  [2mreact/jsx-no-useless-fragment[22m[0m
+[0m[0m
+[0m[4m/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/demo/src/hooks/usePrescriptionExtraction.ts[24m[0m
+[0m  [2m353:14[22m  [33mwarning[39m  'e' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[33m[1m✖ 5 problems (0 errors, 5 warnings)[22m[39m[0m
+[0m[33m[1m[22m[39m[0m
+
+> nx run @smart-prescription-reader/demo:bundle:production
+
+
+♻️  Generating routes...
+✅ Processed routes in 102ms
+
+♻️  Regenerating routes...
+✅ Processed routes in 37ms
+[36mvite v6.4.1 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 2069 modules transformed.
+rendering chunks...
+computing gzip size...
+[2m../../dist/packages/demo/bundle/[22m[32mindex.html                 [39m[1m[2m    0.47 kB[22m[1m[22m[2m │ gzip:   0.29 kB[22m
+[2m../../dist/packages/demo/bundle/[22m[2massets/[22m[35mindex-B6aIa0Eo.css  [39m[1m[2m  779.44 kB[22m[1m[22m[2m │ gzip: 204.91 kB[22m
+[2m../../dist/packages/demo/bundle/[22m[2massets/[22m[36mace-DhqA_GKZ.js     [39m[1m[2m  457.08 kB[22m[1m[22m[2m │ gzip: 127.79 kB[22m
+[2m../../dist/packages/demo/bundle/[22m[2massets/[22m[36mindex-DSqgCeOr.js   [39m[1m[33m1,095.70 kB[39m[22m[2m │ gzip: 312.97 kB[22m
+[33m
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[32m✓ built in 4.01s[39m
 
 > nx run @smart-prescription-reader/infra:synth
 
@@ -155,10 +228,10 @@ Successfully built [36m[1mdist/smart_prescription_reader-1.0.0-py3-none-any.wh
 #1 DONE 0.0s
 
 #2 [internal] load metadata for public.ecr.aws/sam/build-python3.13:1.132.0-20241211194230
-#2 DONE 1.7s
+#2 DONE 1.5s
 
 #3 [internal] load .dockerignore
-#3 transferring context: 102B 0.0s done
+#3 transferring context: 102B done
 #3 DONE 0.0s
 
 #4 [stage-0 1/8] FROM public.ecr.aws/sam/build-python3.13:1.132.0-20241211194230@sha256:c63f213cf30674c89e9bc1e4115ccc3306b0ac36e11f520ebb6eed32e82c3ddb
@@ -168,97 +241,43 @@ Successfully built [36m[1mdist/smart_prescription_reader-1.0.0-py3-none-any.wh
 #5 transferring context: 348.38kB 0.0s done
 #5 DONE 0.0s
 
-#6 [stage-0 2/8] RUN mkdir /asset
+#6 [stage-0 4/8] COPY . .
 #6 CACHED
 
-#7 [stage-0 3/8] RUN pip install uv
+#7 [stage-0 5/8] RUN rm -rf dist/*
 #7 CACHED
 
-#8 [stage-0 4/8] COPY . .
-#8 DONE 0.0s
+#8 [stage-0 7/8] RUN --mount=type=cache,target=/root/.cache/uv uv build
+#8 CACHED
 
-#9 [stage-0 5/8] RUN rm -rf dist/*
-#9 DONE 0.2s
+#9 [stage-0 2/8] RUN mkdir /asset
+#9 CACHED
 
 #10 [stage-0 6/8] RUN --mount=type=cache,target=/root/.cache/uv uv run pytest
-#10 0.219 Using CPython 3.13.0 interpreter at: /var/lang/bin/python3
-#10 0.220 Creating virtual environment at: .venv
-#10 0.305    Building smart-prescription-reader @ file:///var/task
-#10 0.703       Built smart-prescription-reader @ file:///var/task
-#10 2.522 Installed 91 packages in 1.81s
-#10 3.398 ============================= test session starts ==============================
-#10 3.398 platform linux -- Python 3.13.0, pytest-8.3.5, pluggy-1.5.0
-#10 3.398 rootdir: /var/task
-#10 3.398 configfile: pyproject.toml
-#10 3.398 testpaths: tests
-#10 3.398 plugins: sugar-1.0.0
-#10 3.398 collected 28 items / 3 deselected / 25 selected
-#10 3.398 
-#10 3.398 tests/JobStatus/test_dynamodb.py ........                                [ 32%]
-#10 3.403 tests/JobStatus/test_local.py ..........                                 [ 72%]
-#10 3.408 tests/test_ocr_service.py ..                                             [ 80%]
-#10 3.411 tests/test_update_job_status.py ....                                     [ 96%]
-#10 3.413 tests/test_upload_file.py .                                              [100%]
-#10 3.415 
-#10 3.415 ======================= 25 passed, 3 deselected in 0.59s =======================
-#10 DONE 4.1s
+#10 CACHED
 
-#11 [stage-0 7/8] RUN --mount=type=cache,target=/root/.cache/uv uv build
-#11 0.136 Building source distribution...
-#11 0.419 Building wheel from source distribution...
-#11 0.605 Successfully built dist/smart_prescription_reader-1.0.0.tar.gz
-#11 0.605 Successfully built dist/smart_prescription_reader-1.0.0-py3-none-any.whl
-#11 DONE 0.6s
+#11 [stage-0 3/8] RUN pip install uv
+#11 CACHED
 
 #12 [stage-0 8/8] RUN --mount=type=cache,target=/root/.cache/uv uv pip install --reinstall --compile-bytecode --target /asset dist/*.whl
-#12 0.255 Using CPython 3.13.0 interpreter at: .venv/bin/python3
-#12 0.394 Resolved 23 packages in 137ms
-#12 0.406 Prepared 23 packages in 11ms
-#12 0.974 Installed 23 packages in 567ms
-#12 1.162 Bytecode compiled 767 files in 187ms
-#12 1.162  + annotated-types==0.7.0
-#12 1.162  + attrs==26.1.0
-#12 1.162  + aws-lambda-powertools==3.26.0
-#12 1.162  + boto3==1.42.74
-#12 1.162  + botocore==1.42.74
-#12 1.162  + jinja2==3.1.6
-#12 1.162  + jmespath==1.1.0
-#12 1.162  + json-repair==0.58.6
-#12 1.162  + jsonschema==4.26.0
-#12 1.162  + jsonschema-specifications==2025.9.1
-#12 1.162  + markupsafe==3.0.3
-#12 1.162  + pydantic==2.12.5
-#12 1.162  + pydantic-core==2.41.5
-#12 1.162  + python-dateutil==2.9.0.post0
-#12 1.162  + referencing==0.37.0
-#12 1.162  + rpds-py==0.30.0
-#12 1.162  + s3transfer==0.16.0
-#12 1.162  + six==1.17.0
-#12 1.162  + smart-prescription-reader==1.0.0 (from file:///var/task/dist/smart_prescription_reader-1.0.0-py3-none-any.whl)
-#12 1.162  + tenacity==9.1.4
-#12 1.162  + typing-extensions==4.15.0
-#12 1.162  + typing-inspection==0.4.2
-#12 1.162  + urllib3==2.6.3
-#12 DONE 1.3s
+#12 CACHED
 
 #13 exporting to image
-#13 exporting layers
-#13 exporting layers 0.9s done
-#13 writing image sha256:84a843294a4f8ba8e76795a9eba823b2a9cfcb6e696e1b3d0d9bcce72fbfeed2
+#13 exporting layers done
 #13 writing image sha256:84a843294a4f8ba8e76795a9eba823b2a9cfcb6e696e1b3d0d9bcce72fbfeed2 done
 #13 naming to docker.io/library/cdk-9114686fde15133d93bceb601b8daf9973a545b192901f2e7158d224b38396a5 done
-#13 DONE 0.9s
+#13 DONE 0.0s
 
-View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/pe7v5pu5z05vs1kr1isdavrdj
-c7f95cbdbe24971590ab4e7179b2b5f4b43a194c4f88168bf74dcf02e7e3058b
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/05ydgv2y9zwrj7ys1oa05np9r
+f26ab0cf4ad75c155479a9727218e17a03a4b61e03b13cc3686c1bfddfd53b53
 [CdkGraph] Artifact GRAPH written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/graph.json\graph.json]8;;\ (CdkGraph)
 [CdkGraph] Artifact DIAGRAM_DOT written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/diagram.dot\diagram.dot]8;;\ (plugin:diagram@0.0.0)
-(node:4522) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(node:5656) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 [CdkGraph] Artifact DIAGRAM_SVG written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/diagram.svg\diagram.svg]8;;\ (plugin:diagram@0.0.0)
 [CdkGraph] Artifact DIAGRAM_PNG written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/diagram.png\diagram.png]8;;\ (plugin:diagram@0.0.0)
 [CdkGraph] Artifact THREAT_MODEL written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/threat-model.tc.json\threat-model.tc.json]8;;\ (plugin:threat-composer@0.0.0)
-(node:4501) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(node:5638) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Description: Smart Prescription Reader (uksb-3hduwicyoi)
 Resources:
@@ -3500,5 +3519,4 @@ If you don’t want to see a notice anymore, use "cdk acknowledge <id>". For exa
 
  NX   Successfully ran target synth for project @smart-prescription-reader/infra and 20 tasks it depends on
 
-Nx read the output from the cache instead of running the command for 17 out of 21 tasks.
 
