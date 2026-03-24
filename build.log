@@ -38,6 +38,37 @@
 > nx run @smart-prescription-reader/demo:test  [existing outputs match the cache, left as is]
 
 
+> nx run graphql-python-connector:generate
+
+> uv run --project ./python turms gen
+
+[1m[33mwarning[39m[0m[1m:[0m [1m`VIRTUAL_ENV=/Users/strunkjd/Code/2026-q1-ngde-cohort-amer-beabrian/strunkjd/week4/.venv` does not match the project environment path `python/.venv` and will be ignored; use `--active` to target the active environment instead[0m
+   [36m[1mBuilding[0m[39m graphql-python-connector[2m @ file:///private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/common/models-graphql/python[0m
+      [32m[1mBuilt[0m[39m graphql-python-connector[2m @ file:///private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/common/models-graphql/python[0m
+[2mUninstalled [1m1 package[0m [2min 4ms[0m[0m
+[2mInstalled [1m1 package[0m [2min 62ms[0m[0m
+[?25l[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
+[32m│[0m                                                                              [32m│[0m
+[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
+[32m│[0m                                                                              [32m│[0m
+[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
+[32m│[0m                                                                              [32m│[0m
+[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
+[32m│[0m                                                                              [32m│[0m
+[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
+[32m│[0m                                                                              [32m│[0m
+[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
+[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
+[32m│[0m                                                                              [32m│[0m
+[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
+[32m│[0m                                                                              [32m│[0m
+[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
+[32m│[0m                                                                              [32m│[0m
+[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
+[32m│[0m └── [37mdefault ✔️[0m                                                                [32m│[0m
+[32m│[0m                                                                              [32m│[0m
+[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m
+[?25h
 > nx run @smart-prescription-reader/models-graphql:generate
 
 
@@ -75,153 +106,45 @@
 > nx run @smart-prescription-reader/common-constructs:build  [local cache]
 
 
-> nx run graphql-python-connector:generate
-
-> uv run --project ./python turms gen
-
-[1m[33mwarning[39m[0m[1m:[0m [1m`VIRTUAL_ENV=/Users/strunkjd/Code/2026-q1-ngde-cohort-amer-beabrian/strunkjd/week4/.venv` does not match the project environment path `python/.venv` and will be ignored; use `--active` to target the active environment instead[0m
-   [36m[1mBuilding[0m[39m graphql-python-connector[2m @ file:///private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/common/models-graphql/python[0m
-      [32m[1mBuilt[0m[39m graphql-python-connector[2m @ file:///private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/packages/common/models-graphql/python[0m
-[2mUninstalled [1m3 packages[0m [2min 68ms[0m[0m
-[2mInstalled [1m4 packages[0m [2min 555ms[0m[0m
-[?25l[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault[0m                                                                  [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[32m╭─[0m[32m Turms [0m[32m─────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m Generating the default projects. This may take a while...                    [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m│[0m [1;32mGenerating projects[0m                                                          [32m│[0m
-[32m│[0m └── [37mdefault ✔️[0m                                                                [32m│[0m
-[32m│[0m                                                                              [32m│[0m
-[32m╰──────────────────────────────────────────────────────────────────────────────╯[0m
-[?25h
-> nx run smart-prescription-reader:build  [existing outputs match the cache, left as is]
+> nx run smart-prescription-reader:build
 
 
-> nx run @smart-prescription-reader/infra:synth  [existing outputs match the cache, left as is]
+  [1mBuilding project [22m[1m[44m smart-prescription-reader [49m[22m[1m...[22m
+
+  Copying project files to a temporary folder
+  Resolving dependencies...
+    • Adding [34m[1mannotated-types==0.7.0[22m[39m dependency
+    • Adding [34m[1mattrs==25.3.0[22m[39m dependency
+    • Adding [34m[1maws-lambda-powertools==3.8.0[22m[39m dependency
+    • Adding [34m[1mboto3==1.37.31[22m[39m dependency
+    • Adding [34m[1mbotocore==1.37.31[22m[39m dependency
+    • Adding [34m[1mjinja2==3.1.6[22m[39m dependency
+    • Adding [34m[1mjmespath==1.0.1[22m[39m dependency
+    • Adding [34m[1mjson-repair==0.40.0[22m[39m dependency
+    • Adding [34m[1mjsonschema==4.23.0[22m[39m dependency
+    • Adding [34m[1mjsonschema-specifications==2024.10.1[22m[39m dependency
+    • Adding [34m[1mmarkupsafe==3.0.2[22m[39m dependency
+    • Adding [34m[1mpydantic==2.10.6[22m[39m dependency
+    • Adding [34m[1mpydantic-core==2.27.2[22m[39m dependency
+    • Adding [34m[1mpython-dateutil==2.9.0.post0[22m[39m dependency
+    • Adding [34m[1mreferencing==0.36.2[22m[39m dependency
+    • Adding [34m[1mrpds-py==0.23.1[22m[39m dependency
+    • Adding [34m[1ms3transfer==0.11.4[22m[39m dependency
+    • Adding [34m[1msix==1.17.0[22m[39m dependency
+    • Adding [34m[1mtenacity==9.0.0[22m[39m dependency
+    • Adding [34m[1mtyping-extensions==4.15.0[22m[39m dependency
+    • Adding [34m[1murllib3==1.26.20 ; python_full_version < '3.10'[22m[39m dependency
+    • Adding [34m[1murllib3==2.6.3 ; python_full_version >= '3.10'[22m[39m dependency
+  Generating sdist and wheel artifacts
+[1mRunning command[22m: uv build at [1m/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/nx-python/build/8a638aee-3359-4495-9621-226531179a11[22m folder
+
+[1mBuilding source distribution...[0m
+[1mBuilding wheel from source distribution...[0m
+Successfully built [36m[1mdist/smart_prescription_reader-1.0.0.tar.gz[0m[39m
+Successfully built [36m[1mdist/smart_prescription_reader-1.0.0-py3-none-any.whl[0m[39m
+  Artifacts generated at [1mpackages/core/dist[22m folder
+
+> nx run @smart-prescription-reader/infra:synth
 
 > cdk synth
 
@@ -235,15 +158,15 @@
 #2 DONE 1.7s
 
 #3 [internal] load .dockerignore
-#3 transferring context: 102B done
+#3 transferring context: 102B 0.0s done
 #3 DONE 0.0s
 
 #4 [stage-0 1/8] FROM public.ecr.aws/sam/build-python3.13:1.132.0-20241211194230@sha256:c63f213cf30674c89e9bc1e4115ccc3306b0ac36e11f520ebb6eed32e82c3ddb
 #4 DONE 0.0s
 
 #5 [internal] load build context
-#5 transferring context: 696.64kB 0.1s done
-#5 DONE 0.1s
+#5 transferring context: 348.38kB 0.0s done
+#5 DONE 0.0s
 
 #6 [stage-0 2/8] RUN mkdir /asset
 #6 CACHED
@@ -252,93 +175,91 @@
 #7 CACHED
 
 #8 [stage-0 4/8] COPY . .
-#8 CACHED
+#8 DONE 0.0s
 
 #9 [stage-0 5/8] RUN rm -rf dist/*
-#9 CACHED
+#9 DONE 0.2s
 
 #10 [stage-0 6/8] RUN --mount=type=cache,target=/root/.cache/uv uv run pytest
-#10 CACHED
+#10 0.219 Using CPython 3.13.0 interpreter at: /var/lang/bin/python3
+#10 0.220 Creating virtual environment at: .venv
+#10 0.305    Building smart-prescription-reader @ file:///var/task
+#10 0.703       Built smart-prescription-reader @ file:///var/task
+#10 2.522 Installed 91 packages in 1.81s
+#10 3.398 ============================= test session starts ==============================
+#10 3.398 platform linux -- Python 3.13.0, pytest-8.3.5, pluggy-1.5.0
+#10 3.398 rootdir: /var/task
+#10 3.398 configfile: pyproject.toml
+#10 3.398 testpaths: tests
+#10 3.398 plugins: sugar-1.0.0
+#10 3.398 collected 28 items / 3 deselected / 25 selected
+#10 3.398 
+#10 3.398 tests/JobStatus/test_dynamodb.py ........                                [ 32%]
+#10 3.403 tests/JobStatus/test_local.py ..........                                 [ 72%]
+#10 3.408 tests/test_ocr_service.py ..                                             [ 80%]
+#10 3.411 tests/test_update_job_status.py ....                                     [ 96%]
+#10 3.413 tests/test_upload_file.py .                                              [100%]
+#10 3.415 
+#10 3.415 ======================= 25 passed, 3 deselected in 0.59s =======================
+#10 DONE 4.1s
 
 #11 [stage-0 7/8] RUN --mount=type=cache,target=/root/.cache/uv uv build
-#11 CACHED
+#11 0.136 Building source distribution...
+#11 0.419 Building wheel from source distribution...
+#11 0.605 Successfully built dist/smart_prescription_reader-1.0.0.tar.gz
+#11 0.605 Successfully built dist/smart_prescription_reader-1.0.0-py3-none-any.whl
+#11 DONE 0.6s
 
 #12 [stage-0 8/8] RUN --mount=type=cache,target=/root/.cache/uv uv pip install --reinstall --compile-bytecode --target /asset dist/*.whl
-#12 CACHED
+#12 0.255 Using CPython 3.13.0 interpreter at: .venv/bin/python3
+#12 0.394 Resolved 23 packages in 137ms
+#12 0.406 Prepared 23 packages in 11ms
+#12 0.974 Installed 23 packages in 567ms
+#12 1.162 Bytecode compiled 767 files in 187ms
+#12 1.162  + annotated-types==0.7.0
+#12 1.162  + attrs==26.1.0
+#12 1.162  + aws-lambda-powertools==3.26.0
+#12 1.162  + boto3==1.42.74
+#12 1.162  + botocore==1.42.74
+#12 1.162  + jinja2==3.1.6
+#12 1.162  + jmespath==1.1.0
+#12 1.162  + json-repair==0.58.6
+#12 1.162  + jsonschema==4.26.0
+#12 1.162  + jsonschema-specifications==2025.9.1
+#12 1.162  + markupsafe==3.0.3
+#12 1.162  + pydantic==2.12.5
+#12 1.162  + pydantic-core==2.41.5
+#12 1.162  + python-dateutil==2.9.0.post0
+#12 1.162  + referencing==0.37.0
+#12 1.162  + rpds-py==0.30.0
+#12 1.162  + s3transfer==0.16.0
+#12 1.162  + six==1.17.0
+#12 1.162  + smart-prescription-reader==1.0.0 (from file:///var/task/dist/smart_prescription_reader-1.0.0-py3-none-any.whl)
+#12 1.162  + tenacity==9.1.4
+#12 1.162  + typing-extensions==4.15.0
+#12 1.162  + typing-inspection==0.4.2
+#12 1.162  + urllib3==2.6.3
+#12 DONE 1.3s
 
 #13 exporting to image
-#13 exporting layers done
-#13 writing image sha256:26417a4ae6aa18e1c096c7d46f65a2693a47a02754c59b3ca72ae0f5578f62e1 done
+#13 exporting layers
+#13 exporting layers 0.9s done
+#13 writing image sha256:84a843294a4f8ba8e76795a9eba823b2a9cfcb6e696e1b3d0d9bcce72fbfeed2
+#13 writing image sha256:84a843294a4f8ba8e76795a9eba823b2a9cfcb6e696e1b3d0d9bcce72fbfeed2 done
 #13 naming to docker.io/library/cdk-9114686fde15133d93bceb601b8daf9973a545b192901f2e7158d224b38396a5 done
-#13 DONE 0.0s
+#13 DONE 0.9s
 
-View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/vn3grk1kd4hql36ueqjny26u4
-1f11498ea352bbbe1e6b89f43e0a3f664c9ab7d0a8dba84cf1823fcebd74fb2f
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/pe7v5pu5z05vs1kr1isdavrdj
+c7f95cbdbe24971590ab4e7179b2b5f4b43a194c4f88168bf74dcf02e7e3058b
 [CdkGraph] Artifact GRAPH written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/graph.json\graph.json]8;;\ (CdkGraph)
 [CdkGraph] Artifact DIAGRAM_DOT written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/diagram.dot\diagram.dot]8;;\ (plugin:diagram@0.0.0)
-(node:2045) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(node:4522) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 [CdkGraph] Artifact DIAGRAM_SVG written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/diagram.svg\diagram.svg]8;;\ (plugin:diagram@0.0.0)
 [CdkGraph] Artifact DIAGRAM_PNG written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/diagram.png\diagram.png]8;;\ (plugin:diagram@0.0.0)
 [CdkGraph] Artifact THREAT_MODEL written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/threat-model.tc.json\threat-model.tc.json]8;;\ (plugin:threat-composer@0.0.0)
-(node:2015) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(node:4501) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-#0 building with "desktop-linux" instance using docker driver
-
-#1 [internal] load build definition from Dockerfile
-#1 transferring dockerfile: 622B done
-#1 DONE 0.0s
-
-#2 [internal] load metadata for public.ecr.aws/sam/build-python3.13:1.132.0-20241211194230
-#2 DONE 0.4s
-
-#3 [internal] load .dockerignore
-#3 transferring context: 102B done
-#3 DONE 0.0s
-
-#4 [stage-0 1/8] FROM public.ecr.aws/sam/build-python3.13:1.132.0-20241211194230@sha256:c63f213cf30674c89e9bc1e4115ccc3306b0ac36e11f520ebb6eed32e82c3ddb
-#4 DONE 0.0s
-
-#5 [internal] load build context
-#5 transferring context: 3.86kB 0.0s done
-#5 DONE 0.0s
-
-#6 [stage-0 2/8] RUN mkdir /asset
-#6 CACHED
-
-#7 [stage-0 4/8] COPY . .
-#7 CACHED
-
-#8 [stage-0 5/8] RUN rm -rf dist/*
-#8 CACHED
-
-#9 [stage-0 6/8] RUN --mount=type=cache,target=/root/.cache/uv uv run pytest
-#9 CACHED
-
-#10 [stage-0 3/8] RUN pip install uv
-#10 CACHED
-
-#11 [stage-0 7/8] RUN --mount=type=cache,target=/root/.cache/uv uv build
-#11 CACHED
-
-#12 [stage-0 8/8] RUN --mount=type=cache,target=/root/.cache/uv uv pip install --reinstall --compile-bytecode --target /asset dist/*.whl
-#12 CACHED
-
-#13 exporting to image
-#13 exporting layers done
-#13 writing image sha256:26417a4ae6aa18e1c096c7d46f65a2693a47a02754c59b3ca72ae0f5578f62e1 done
-#13 naming to docker.io/library/cdk-9114686fde15133d93bceb601b8daf9973a545b192901f2e7158d224b38396a5 done
-#13 DONE 0.0s
-
-View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/aorezt8p61c4qg956k7q42fkm
-ed82b785543ce0fc570759f4a0db9639bc88ff8613b032362d5459e904e30ad0
-[CdkGraph] Artifact GRAPH written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/graph.json\graph.json]8;;\ (CdkGraph)
-[CdkGraph] Artifact DIAGRAM_DOT written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/diagram.dot\diagram.dot]8;;\ (plugin:diagram@0.0.0)
-(node:2299) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-[CdkGraph] Artifact DIAGRAM_SVG written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/diagram.svg\diagram.svg]8;;\ (plugin:diagram@0.0.0)
-[CdkGraph] Artifact DIAGRAM_PNG written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/diagram.png\diagram.png]8;;\ (plugin:diagram@0.0.0)
-[CdkGraph] Artifact THREAT_MODEL written to ]8;;file://../../dist/packages/infra/cdk.out/cdkgraph/threat-model.tc.json\threat-model.tc.json]8;;\ (plugin:threat-composer@0.0.0)
 Description: Smart Prescription Reader (uksb-3hduwicyoi)
 Resources:
   FlowLogs16C1943A:
@@ -2063,7 +1984,7 @@ Resources:
         - arm64
       Code:
         S3Bucket: cdk-hnb659fds-assets-199289540294-us-east-1
-        S3Key: 3217bbf74e59d1904536d4020433f1dcfe1465338aa161f639511a5aa09d1021.zip
+        S3Key: 650e1be28f75a7a767b7cd21c812ec7ed3925e0409f8237175fc5491adf013a3.zip
       Environment:
         Variables:
           INPUT_BUCKET_NAME:
@@ -2093,7 +2014,7 @@ Resources:
       - WorkflowOcrPrescriptionLambdaServiceRoleEDC56794
     Metadata:
       aws:cdk:path: SmartPrescriptionReader/Workflow/OcrPrescriptionLambda/Resource
-      aws:asset:path: asset.3217bbf74e59d1904536d4020433f1dcfe1465338aa161f639511a5aa09d1021
+      aws:asset:path: asset.650e1be28f75a7a767b7cd21c812ec7ed3925e0409f8237175fc5491adf013a3
       aws:asset:is-bundled: false
       aws:asset:property: Code
       cdk_nag:
@@ -2231,7 +2152,7 @@ Resources:
         - arm64
       Code:
         S3Bucket: cdk-hnb659fds-assets-199289540294-us-east-1
-        S3Key: 3217bbf74e59d1904536d4020433f1dcfe1465338aa161f639511a5aa09d1021.zip
+        S3Key: 650e1be28f75a7a767b7cd21c812ec7ed3925e0409f8237175fc5491adf013a3.zip
       Environment:
         Variables:
           INPUT_BUCKET_NAME:
@@ -2269,7 +2190,7 @@ Resources:
       - WorkflowExtractPrescriptionLambdaServiceRoleB87B44E6
     Metadata:
       aws:cdk:path: SmartPrescriptionReader/Workflow/ExtractPrescriptionLambda/Resource
-      aws:asset:path: asset.3217bbf74e59d1904536d4020433f1dcfe1465338aa161f639511a5aa09d1021
+      aws:asset:path: asset.650e1be28f75a7a767b7cd21c812ec7ed3925e0409f8237175fc5491adf013a3
       aws:asset:is-bundled: false
       aws:asset:property: Code
       cdk_nag:
@@ -2407,7 +2328,7 @@ Resources:
         - arm64
       Code:
         S3Bucket: cdk-hnb659fds-assets-199289540294-us-east-1
-        S3Key: 3217bbf74e59d1904536d4020433f1dcfe1465338aa161f639511a5aa09d1021.zip
+        S3Key: 650e1be28f75a7a767b7cd21c812ec7ed3925e0409f8237175fc5491adf013a3.zip
       Environment:
         Variables:
           INPUT_BUCKET_NAME:
@@ -2445,7 +2366,7 @@ Resources:
       - WorkflowEvaluateResponseLambdaServiceRole3B2B2BD6
     Metadata:
       aws:cdk:path: SmartPrescriptionReader/Workflow/EvaluateResponseLambda/Resource
-      aws:asset:path: asset.3217bbf74e59d1904536d4020433f1dcfe1465338aa161f639511a5aa09d1021
+      aws:asset:path: asset.650e1be28f75a7a767b7cd21c812ec7ed3925e0409f8237175fc5491adf013a3
       aws:asset:is-bundled: false
       aws:asset:property: Code
       cdk_nag:
@@ -2583,7 +2504,7 @@ Resources:
         - arm64
       Code:
         S3Bucket: cdk-hnb659fds-assets-199289540294-us-east-1
-        S3Key: 3217bbf74e59d1904536d4020433f1dcfe1465338aa161f639511a5aa09d1021.zip
+        S3Key: 650e1be28f75a7a767b7cd21c812ec7ed3925e0409f8237175fc5491adf013a3.zip
       Environment:
         Variables:
           INPUT_BUCKET_NAME:
@@ -2621,7 +2542,7 @@ Resources:
       - WorkflowCorrectResponseLambdaServiceRole7D5D799F
     Metadata:
       aws:cdk:path: SmartPrescriptionReader/Workflow/CorrectResponseLambda/Resource
-      aws:asset:path: asset.3217bbf74e59d1904536d4020433f1dcfe1465338aa161f639511a5aa09d1021
+      aws:asset:path: asset.650e1be28f75a7a767b7cd21c812ec7ed3925e0409f8237175fc5491adf013a3
       aws:asset:is-bundled: false
       aws:asset:property: Code
       cdk_nag:
@@ -2756,7 +2677,7 @@ Resources:
         - arm64
       Code:
         S3Bucket: cdk-hnb659fds-assets-199289540294-us-east-1
-        S3Key: 3217bbf74e59d1904536d4020433f1dcfe1465338aa161f639511a5aa09d1021.zip
+        S3Key: 650e1be28f75a7a767b7cd21c812ec7ed3925e0409f8237175fc5491adf013a3.zip
       Environment:
         Variables:
           JOB_STATUS_TABLE:
@@ -2786,7 +2707,7 @@ Resources:
       - WorkflowUpdateJobStatusLambdaServiceRoleF3D6981E
     Metadata:
       aws:cdk:path: SmartPrescriptionReader/Workflow/UpdateJobStatusLambda/Resource
-      aws:asset:path: asset.3217bbf74e59d1904536d4020433f1dcfe1465338aa161f639511a5aa09d1021
+      aws:asset:path: asset.650e1be28f75a7a767b7cd21c812ec7ed3925e0409f8237175fc5491adf013a3
       aws:asset:is-bundled: false
       aws:asset:property: Code
       cdk_nag:
@@ -3186,7 +3107,7 @@ Resources:
         - arm64
       Code:
         S3Bucket: cdk-hnb659fds-assets-199289540294-us-east-1
-        S3Key: 3217bbf74e59d1904536d4020433f1dcfe1465338aa161f639511a5aa09d1021.zip
+        S3Key: 650e1be28f75a7a767b7cd21c812ec7ed3925e0409f8237175fc5491adf013a3.zip
       Environment:
         Variables:
           INPUT_BUCKET_NAME:
@@ -3206,7 +3127,7 @@ Resources:
       - ApiDataSourcesRequestUploadFileFunctionServiceRoleD0BD6386
     Metadata:
       aws:cdk:path: SmartPrescriptionReader/ApiDataSources/RequestUploadFileFunction/Resource
-      aws:asset:path: asset.3217bbf74e59d1904536d4020433f1dcfe1465338aa161f639511a5aa09d1021
+      aws:asset:path: asset.650e1be28f75a7a767b7cd21c812ec7ed3925e0409f8237175fc5491adf013a3
       aws:asset:is-bundled: false
       aws:asset:property: Code
       cdk_nag:
@@ -3303,7 +3224,7 @@ Resources:
         - arm64
       Code:
         S3Bucket: cdk-hnb659fds-assets-199289540294-us-east-1
-        S3Key: 3217bbf74e59d1904536d4020433f1dcfe1465338aa161f639511a5aa09d1021.zip
+        S3Key: 650e1be28f75a7a767b7cd21c812ec7ed3925e0409f8237175fc5491adf013a3.zip
       Environment:
         Variables:
           JOBS_TABLE:
@@ -3325,7 +3246,7 @@ Resources:
       - ApiDataSourcesProcessPrescriptionFunctionServiceRole3AFD9641
     Metadata:
       aws:cdk:path: SmartPrescriptionReader/ApiDataSources/ProcessPrescriptionFunction/Resource
-      aws:asset:path: asset.3217bbf74e59d1904536d4020433f1dcfe1465338aa161f639511a5aa09d1021
+      aws:asset:path: asset.650e1be28f75a7a767b7cd21c812ec7ed3925e0409f8237175fc5491adf013a3
       aws:asset:is-bundled: false
       aws:asset:property: Code
       cdk_nag:
@@ -3579,5 +3500,5 @@ If you don’t want to see a notice anymore, use "cdk acknowledge <id>". For exa
 
  NX   Successfully ran target synth for project @smart-prescription-reader/infra and 20 tasks it depends on
 
-Nx read the output from the cache instead of running the command for 19 out of 21 tasks.
+Nx read the output from the cache instead of running the command for 17 out of 21 tasks.
 
