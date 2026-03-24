@@ -1,0 +1,15 @@
+
+ NX   (0 , brace_expansion_1.expand) is not a function
+
+TypeError: (0 , brace_expansion_1.expand) is not a function
+    at braceExpand (/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/node_modules/.pnpm/minimatch@10.2.4/node_modules/minimatch/dist/commonjs/index.js:157:41)
+    at Minimatch.braceExpand (/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/node_modules/.pnpm/minimatch@10.2.4/node_modules/minimatch/dist/commonjs/index.js:891:40)
+    at Minimatch.make (/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/node_modules/.pnpm/minimatch@10.2.4/node_modules/minimatch/dist/commonjs/index.js:268:41)
+    at new Minimatch (/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/node_modules/.pnpm/minimatch@10.2.4/node_modules/minimatch/dist/commonjs/index.js:238:14)
+    at minimatch (/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/node_modules/.pnpm/minimatch@10.2.4/node_modules/minimatch/dist/commonjs/index.js:15:12)
+    at findMatchingConfigFiles (/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/node_modules/.pnpm/nx@20.4.6_@swc-node+register@1.9.2_@swc+core@1.5.29_@swc+helpers@0.5.15__@swc+types@0.1_767375eb4d6dac4186e19c8fb304902e/node_modules/nx/src/project-graph/utils/project-configuration-utils.js:360:39)
+    at createProjectConfigurationsWithPlugins (/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/node_modules/.pnpm/nx@20.4.6_@swc-node+register@1.9.2_@swc+core@1.5.29_@swc+helpers@0.5.15__@swc+types@0.1_767375eb4d6dac4186e19c8fb304902e/node_modules/nx/src/project-graph/utils/project-configuration-utils.js:256:37)
+    at retrieveProjectConfigurations (/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/node_modules/.pnpm/nx@20.4.6_@swc-node+register@1.9.2_@swc+core@1.5.29_@swc+helpers@0.5.15__@swc+types@0.1_767375eb4d6dac4186e19c8fb304902e/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:47:85)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async processFilesAndCreateAndSerializeProjectGraph (/private/var/folders/vb/t3w3dp7s347dhr0jy8yzppjm0000gq/T/tmpzswgf_ep/sample-smart-prescription-reader/node_modules/.pnpm/nx@20.4.6_@swc-node+register@1.9.2_@swc+core@1.5.29_@swc+helpers@0.5.15__@swc+types@0.1_767375eb4d6dac4186e19c8fb304902e/node_modules/nx/src/daemon/server/project-graph-incremental-recomputation.js:160:43)
+
