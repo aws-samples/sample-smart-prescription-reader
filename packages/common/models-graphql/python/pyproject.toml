@@ -21,6 +21,11 @@ dev = [
     "turms>=0.8.5",
 ]
 
+[tool.uv]
+constraint-dependencies = [
+    "pygments>=2.20.0",
+]
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
