@@ -82,7 +82,7 @@
       "@eslint/plugin-kit": "^0.3.3",
       "ajv@<7": "6.14.0",
       "axios": ">=1.13.5",
-      "brace-expansion": "^2.0.2",
+      "brace-expansion": "~2.0.3",
       "cross-spawn": "^7.0.5",
       "esbuild": "^0.25.2",
       "file-type": ">=21.3.1",
@@ -98,10 +98,20 @@
       "minimatch": "9.0.9",
       "qs": ">=6.14.1",
       "rollup": ">=4.59.0",
-      "serialize-javascript": ">=7.0.3",
+      "serialize-javascript": ">=7.0.5",
       "svgo": ">=3.3.3",
       "tar": ">=7.5.11",
-      "vite": "^6.4.1"
+      "vite": "^6.4.1",
+      "path-to-regexp": ">=0.1.13",
+      "handlebars": ">=4.7.9",
+      "yaml@>=2": ">=2.8.3",
+      "yaml@>=1 <2": ">=1.10.3",
+      "picomatch@>=4": ">=4.0.4",
+      "@tootallnate/once": ">=3.0.1",
+      "webpack": ">=5.104.1",
+      "diff@>=4 <5": "~4.0.4",
+      "diff@>=6": ">=8.0.3",
+      "tmp@>=0.2": ">=0.2.4"
     }
   }
 }
